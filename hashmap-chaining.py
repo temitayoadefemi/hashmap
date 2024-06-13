@@ -17,7 +17,7 @@ class HashMap():
 
         while node != None:
             if node.key == key:
-                node.value == value
+                node.value = value
             
             node = node.next
 
@@ -27,9 +27,13 @@ class HashMap():
         newnode.next = self.buckets[hashpoint]
         self.buckets[hashpoint] = newnode
 
+    
+    def hash(self, key, size):
+        # Example hash function: simple modulus based on size of buckets
+        return hash(key) % size
 
 
-    def __getitem___(self, key):
+    def __getitem__(self, key):
         hashpoint = self.hash(key, self.size)
         node = self.buckets[hashpoint]
 
